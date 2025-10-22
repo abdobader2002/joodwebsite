@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إتمام الطلب | Checkout - مخبز جود</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Left Sidebar Navigation -->
+    <nav class="left-sidebar">
+        <div class="sidebar-content">
+            <a href="index.html" class="sidebar-link">
+                <i class="fas fa-home"></i>
+                <span>الرئيسية | Home</span>
+            </a>
+            <a href="menu.html" class="sidebar-link">
+                <i class="fas fa-utensils"></i>
+                <span>القائمة | Menu</span>
+            </a>
+            <a href="cart.html" class="sidebar-link">
+                <i class="fas fa-shopping-cart"></i>
+                <span>السلة | Cart</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+
+
+    <!-- Main Content -->
+    <main class="order-main">
+        <div class="order-container">
+            <div class="order-header">
+                <h1>إتمام الطلب | Checkout</h1>
+                <p>أكمل طلبك بسهولة | Complete your order easily</p>
+            </div>
+            
+            <div class="order-content">
+                <!-- Order Form -->
+                <form id="order-form" class="order-form">
+                    <!-- Delivery Options -->
+                    <div class="form-section">
+                        <h2>خيارات التوصيل | Delivery Options</h2>
+                        <div class="delivery-options">
+                            <label class="delivery-option">
+                                <input type="radio" name="delivery-type" value="delivery" checked>
+                                <div class="option-content">
+                                    <i class="fas fa-truck"></i>
+                                    <div>
+                                        <h3>توصيل | Delivery</h3>
+                                        <p>سيتم توصيل الطلب إلى عنوانك</p>
+                                        <p>Order will be delivered to your address</p>
+                                    </div>
+                                </div>
+                            </label>
+                            
+                            <label class="delivery-option">
+                                <input type="radio" name="delivery-type" value="pickup">
+                                <div class="option-content">
+                                    <i class="fas fa-store"></i>
+                                    <div>
+                                        <h3>استلام من الفرع | Pickup</h3>
+                                        <p>استلم طلبك من أقرب فرع</p>
+                                        <p>Pick up your order from nearest branch</p>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+            <!-- Branch Selection -->
+            <div class="form-section">
+                <h2>اختر الفرع | Select Branch</h2>
+                <div class="branch-selection">
+                    <label class="branch-option">
+                        <input type="radio" name="branch" value="riyadh" checked>
+                        <div class="branch-content">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h3>الفرع الرئيسي - الرياض</h3>
+                                <h3>Main Branch - Riyadh</h3>
+                                <p>طريق الملك فهد، الرياض</p>
+                                <p>King Fahd Road, Riyadh</p>
+                            </div>
+                        </div>
+                    </label>
+                    
+                    <label class="branch-option">
+                        <input type="radio" name="branch" value="jeddah">
+                        <div class="branch-content">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h3>فرع جدة</h3>
+                                <h3>Jeddah Branch</h3>
+                                <p>كورنيش جدة</p>
+                                <p>Corniche Road, Jeddah</p>
+                            </div>
+                        </div>
+                    </label>
+                    
+                    <label class="branch-option">
+                        <input type="radio" name="branch" value="dammam">
+                        <div class="branch-content">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h3>فرع الدمام</h3>
+                                <h3>Dammam Branch</h3>
+                                <p>طريق الملك عبدالعزيز، الدمام</p>
+                                <p>King Abdulaziz Road, Dammam</p>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Delivery Address -->
+            <div class="form-section" id="address-section">
+                <h2>عنوان التوصيل | Delivery Address</h2>
+                <div class="form-group">
+                    <label for="address">العنوان الكامل | Full Address</label>
+                    <textarea id="address" name="address" placeholder="أدخل عنوانك الكامل | Enter your full address" required></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">المدينة | City</label>
+                        <input type="text" id="city" name="city" placeholder="المدينة | City" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">رقم الهاتف | Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+966 50 123 4567" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Method -->
+            <div class="form-section">
+                <h2>طريقة الدفع | Payment Method</h2>
+                <div class="payment-methods">
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="mada" checked>
+                        <div class="payment-content">
+                            <i class="fas fa-credit-card"></i>
+                            <div>
+                                <h3>مدى | Mada</h3>
+                                <p>بطاقة مدى المحلية</p>
+                                <p>Local Mada Card</p>
+                            </div>
+                        </div>
+                    </label>
+                    
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="stc-pay">
+                        <div class="payment-content">
+                            <i class="fas fa-mobile-alt"></i>
+                            <div>
+                                <h3>STC Pay</h3>
+                                <p>محفظة STC Pay</p>
+                                <p>STC Pay Wallet</p>
+                            </div>
+                        </div>
+                    </label>
+                    
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="hyperpay">
+                        <div class="payment-content">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <h3>HyperPay</h3>
+                                <p>بوابة دفع آمنة</p>
+                                <p>Secure Payment Gateway</p>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="form-section">
+                <h2>ملخص الطلب | Order Summary</h2>
+                <div id="order-summary" class="order-summary">
+                    <!-- Order items will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="submit-section">
+                <button type="submit" class="btn btn-submit">
+                    <i class="fas fa-check"></i>
+                    <span>تأكيد الطلب | Confirm Order</span>
+                </button>
+            </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="success-modal">
+        <div class="modal-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>تم تأكيد الطلب! | Order Confirmed!</h2>
+            <p>شكراً لك! سيتم إعداد طلبك قريباً</p>
+            <p>Thank you! Your order will be prepared soon</p>
+            <div class="success-actions">
+                <a href="index.html" class="btn btn-primary">العودة للرئيسية | Back to Home</a>
+                <a href="menu.html" class="btn btn-secondary">طلب جديد | New Order</a>
+            </div>
+        </div>
+    </div>
+
+
+    </div> <!-- End main-content -->
+
+
+    <script src="script.js"></script>
+</body>
+</html>

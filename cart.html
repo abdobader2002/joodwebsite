@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>السلة | Cart - مخبز جود</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Left Sidebar Navigation -->
+    <nav class="left-sidebar">
+        <div class="sidebar-content">
+            <a href="index.html" class="sidebar-link">
+                <i class="fas fa-home"></i>
+                <span>الرئيسية | Home</span>
+            </a>
+            <a href="menu.html" class="sidebar-link">
+                <i class="fas fa-utensils"></i>
+                <span>القائمة | Menu</span>
+            </a>
+            <a href="cart.html" class="sidebar-link active">
+                <i class="fas fa-shopping-cart"></i>
+                <span>السلة | Cart</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+
+
+    <!-- Main Content -->
+    <main class="cart-main">
+        <div class="container">
+            <!-- Empty Cart State -->
+            <div id="empty-cart" class="empty-cart">
+                <div class="empty-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h2>السلة فارغة | Cart is Empty</h2>
+                <p>لم تقم بإضافة أي منتجات للسلة بعد</p>
+                <p>You haven't added any products to cart yet</p>
+                <a href="menu.html" class="btn btn-primary">
+                    <i class="fas fa-utensils"></i>
+                    <span>تصفح القائمة | Browse Menu</span>
+                </a>
+            </div>
+
+            <!-- Cart Items -->
+            <div id="cart-items" class="cart-items">
+                <!-- Cart items will be loaded here -->
+            </div>
+
+            <!-- Cart Summary -->
+            <div id="cart-summary" class="cart-summary">
+                <div class="summary-row">
+                    <span>المجموع الفرعي | Subtotal:</span>
+                    <span id="subtotal">0 SAR</span>
+                </div>
+                <div class="summary-row">
+                    <span>رسوم التوصيل | Delivery Fee:</span>
+                    <span id="delivery-fee">15 SAR</span>
+                </div>
+                <div class="summary-row total-row">
+                    <span>المجموع الكلي | Total:</span>
+                    <span id="total">0 SAR</span>
+                </div>
+            </div>
+
+            <!-- Checkout Button -->
+            <div class="checkout-section">
+                <a href="order.html" class="btn btn-checkout">
+                    <i class="fas fa-credit-card"></i>
+                    <span>إتمام الطلب | Proceed to Checkout</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+
+    </div> <!-- End main-content -->
+
+
+    <script src="script.js"></script>
+</body>
+</html>

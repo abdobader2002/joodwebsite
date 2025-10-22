@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>القائمة | Menu - مخبز جود</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Left Sidebar Navigation -->
+    <nav class="left-sidebar">
+        <div class="sidebar-content">
+            <a href="index.html" class="sidebar-link">
+                <i class="fas fa-home"></i>
+                <span>الرئيسية | Home</span>
+            </a>
+            <a href="menu.html" class="sidebar-link active">
+                <i class="fas fa-utensils"></i>
+                <span>القائمة | Menu</span>
+            </a>
+            <a href="cart.html" class="sidebar-link">
+                <i class="fas fa-shopping-cart"></i>
+                <span>السلة | Cart</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+
+
+    <!-- Main Content -->
+    <main class="menu-main">
+        <!-- Category Filters -->
+        <div class="category-filters">
+            <button class="filter-btn active" data-category="all">
+                <i class="fas fa-th"></i>
+                <span>الكل | All</span>
+            </button>
+            <button class="filter-btn" data-category="eastern-sweets">
+                <i class="fas fa-cookie-bite"></i>
+                <span>حلويات شرقية | Eastern</span>
+            </button>
+            <button class="filter-btn" data-category="western-sweets">
+                <i class="fas fa-birthday-cake"></i>
+                <span>حلويات غربية | Western</span>
+            </button>
+            <button class="filter-btn" data-category="bread">
+                <i class="fas fa-bread-slice"></i>
+                <span>خبز | Bread</span>
+            </button>
+            <button class="filter-btn" data-category="pastries">
+                <i class="fas fa-cookie"></i>
+                <span>فطائر | Pastries</span>
+            </button>
+            
+            <!-- View Toggle Button -->
+            <button class="view-toggle-btn" id="view-toggle">
+                <i class="fas fa-th" id="view-icon"></i>
+            </button>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="products-grid" id="products-grid">
+            <!-- Products will be loaded here -->
+        </div>
+    </main>
+
+
+
+
+    </div> <!-- End main-content -->
+
+
+    <script src="script.js"></script>
+</body>
+</html>
