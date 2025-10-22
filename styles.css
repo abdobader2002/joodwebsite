@@ -666,25 +666,26 @@ body::before {
     color: var(--primary-color);
 }
 
-.hero-image {
-    flex: 1;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 20px;
-}
-
-.hero-visual {
-    position: relative;
-    width: 300px;
-    height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 4rem;
-    color: var(--white);
-}
+    .hero-image {
+        flex: 1;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 20px;
+        margin-top: 40px;
+    }
+    
+    .hero-visual {
+        position: relative;
+        width: 250px;
+        height: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3.5rem;
+        color: var(--white);
+    }
 
 .floating-elements {
     position: absolute;
@@ -1748,23 +1749,50 @@ body::before {
 
 .empty-cart {
     text-align: center;
-    padding: 60px 20px;
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    background: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin: 20px;
+    border: 2px solid var(--light-gray);
+    transition: var(--transition);
+}
+
+.empty-cart:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
 }
 
 .empty-icon {
-    font-size: 4rem;
+    font-size: 5rem;
     color: var(--text-light);
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    animation: bounce 2s infinite;
 }
 
 .empty-cart h2 {
     color: var(--text-dark);
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+    font-weight: 700;
 }
 
 .empty-cart p {
     color: var(--text-light);
-    margin-bottom: 30px;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 500px;
+}
+
+.empty-cart p:last-of-type {
+    margin-bottom: 40px;
 }
 
 .cart-item {
@@ -2518,6 +2546,28 @@ body::before {
         font-size: 3rem;
     }
     
+    .hero-image {
+        margin-top: 35px;
+        padding: 0 25px;
+    }
+    
+    .hero-visual {
+        width: 220px;
+        height: 220px;
+        font-size: 3.2rem;
+    }
+    
+    .floating-elements {
+        width: 220px;
+        height: 220px;
+    }
+    
+    .float-item {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+    
     .products-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
@@ -2588,15 +2638,15 @@ body::before {
     }
     
     .sidebar-link i {
-        font-size: 1.4rem;
-        margin-bottom: 5px;
+        font-size: 1.5rem;
+        margin-bottom: 6px;
     }
     
     .sidebar-link span {
-        font-size: 0.65rem;
+        font-size: 0.7rem;
         font-weight: 600;
         text-align: center;
-        line-height: 1.1;
+        line-height: 1.2;
         white-space: nowrap;
     }
     
@@ -2679,16 +2729,28 @@ body::before {
         font-size: 1.1rem;
     }
     
+    .hero-image {
+        margin-top: 20px;
+        padding: 0 5px;
+    }
+    
+    .hero-visual {
+        width: 150px;
+        height: 150px;
+        font-size: 2rem;
+    }
+    
     .floating-elements {
-        width: 200px;
-        height: 200px;
+        width: 150px;
+        height: 150px;
     }
     
     .float-item {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
     }
+    
     
     /* Menu Page Responsive */
     .category-filters {
@@ -2889,13 +2951,13 @@ body::before {
     }
     
     .sidebar-link i {
-        font-size: 1.2rem;
-        margin-bottom: 4px;
+        font-size: 1.3rem;
+        margin-bottom: 5px;
     }
     
     .sidebar-link span {
-        font-size: 0.55rem;
-        line-height: 1;
+        font-size: 0.6rem;
+        line-height: 1.1;
     }
     
     /* Main Content Small Mobile */
@@ -3218,13 +3280,13 @@ body::before {
     }
     
     .sidebar-link i {
-        font-size: 1.1rem;
-        margin-bottom: 3px;
+        font-size: 1.2rem;
+        margin-bottom: 4px;
     }
     
     .sidebar-link span {
-        font-size: 0.5rem;
-        line-height: 1;
+        font-size: 0.55rem;
+        line-height: 1.1;
     }
     
     /* Main Content Extra Small Mobile */
@@ -3349,6 +3411,28 @@ body::before {
         padding: 12px 18px;
         font-size: 0.95rem;
         max-width: 260px;
+    }
+    
+    .hero-image {
+        margin-top: 15px;
+        padding: 0 5px;
+    }
+    
+    .hero-visual {
+        width: 120px;
+        height: 120px;
+        font-size: 1.8rem;
+    }
+    
+    .floating-elements {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .float-item {
+        width: 25px;
+        height: 25px;
+        font-size: 0.9rem;
     }
     
     .filter-btn {
