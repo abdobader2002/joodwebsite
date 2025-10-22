@@ -172,6 +172,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check if we're on cart page
     if (document.getElementById('cart-items')) {
         renderCartItems();
+        // Ensure cart state is properly displayed
+        updateCartDisplay();
     }
     
     // Check if we're on order page
@@ -444,11 +446,13 @@ function addToCart(productId) {
     
     if (existingItem) {
         existingItem.quantity += 1;
+        showNotification(`تم إضافة ${existingItem.quantity} من ${product.name} | Added ${existingItem.quantity} ${product.name} to cart!`);
     } else {
         cart.push({
             ...product,
             quantity: 1
         });
+        showNotification(`تم إضافة ${product.name} للسلة | Added ${product.name} to cart!`);
     }
     
     saveCartToStorage();
@@ -456,21 +460,39 @@ function addToCart(productId) {
 }
 
 function removeFromCart(productId) {
+    const item = cart.find(item => item.id === productId);
+    if (!item) return;
+    
     cart = cart.filter(item => item.id !== productId);
     saveCartToStorage();
     updateCartDisplay();
     renderCartItems();
 }
 
+function confirmRemoveItem(productId) {
+    const item = cart.find(item => item.id === productId);
+    if (!item) return;
+    
+    const confirmed = confirm(`هل أنت متأكد من حذف ${item.name} من السلة؟\nAre you sure you want to remove ${item.name} from cart?`);
+    
+    if (confirmed) {
+        removeFromCart(productId);
+        showNotification(`تم حذف ${item.name} من السلة | Removed ${item.name} from cart!`);
+    }
+}
+
 function updateQuantity(productId, change) {
     const item = cart.find(item => item.id === productId);
     if (!item) return;
     
-    item.quantity += change;
+    const newQuantity = item.quantity + change;
     
-    if (item.quantity <= 0) {
+    if (newQuantity <= 0) {
+        // Remove item from cart when quantity becomes 0 or less
         removeFromCart(productId);
+        showNotification(`تم حذف ${item.name} من السلة | Removed ${item.name} from cart!`);
     } else {
+        item.quantity = newQuantity;
         saveCartToStorage();
         updateCartDisplay();
         renderCartItems();
@@ -491,17 +513,26 @@ function renderCartItems() {
     const cartItems = document.getElementById('cart-items');
     const emptyCart = document.getElementById('empty-cart');
     const cartSummary = document.getElementById('cart-summary');
+    const checkoutSection = document.querySelector('.checkout-section');
     
     if (!cartItems) return;
     
     if (cart.length === 0) {
-        if (emptyCart) emptyCart.style.display = 'block';
+        // Show empty cart state
+        if (emptyCart) emptyCart.style.display = 'flex';
+        // Hide cart items, summary, and checkout
+        cartItems.style.display = 'none';
         if (cartSummary) cartSummary.style.display = 'none';
+        if (checkoutSection) checkoutSection.style.display = 'none';
         return;
     }
     
+    // Hide empty cart state
     if (emptyCart) emptyCart.style.display = 'none';
+    // Show cart items, summary, and checkout
+    cartItems.style.display = 'block';
     if (cartSummary) cartSummary.style.display = 'block';
+    if (checkoutSection) checkoutSection.style.display = 'block';
     
     cartItems.innerHTML = '';
     
@@ -516,10 +547,17 @@ function renderCartItems() {
                 <div class="item-name">${item.name}</div>
                 <div class="item-price">${item.price} ريال</div>
                 <div class="item-controls">
-                    <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                    <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)" title="تقليل الكمية | Decrease Quantity">
+                        <i class="fas fa-minus"></i>
+                    </button>
                     <span class="quantity">${item.quantity}</span>
-                    <button class="qty-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
-                    <button class="remove-btn" onclick="removeFromCart(${item.id})">حذف</button>
+                    <button class="qty-btn" onclick="updateQuantity(${item.id}, 1)" title="زيادة الكمية | Increase Quantity">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <button class="remove-btn" onclick="confirmRemoveItem(${item.id})" title="حذف المنتج | Remove Product">
+                        <i class="fas fa-trash"></i>
+                        <span>حذف | Remove</span>
+                    </button>
                 </div>
             </div>
         `;
@@ -653,27 +691,46 @@ function showNotification(message) {
         position: fixed;
         top: 20px;
         right: 20px;
-        background: var(--primary-color);
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
         color: white;
         padding: 15px 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        z-index: 1000;
-        animation: slideInRight 0.3s ease-out;
-        max-width: 300px;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(47, 95, 118, 0.3);
+        z-index: 10000;
+        animation: slideInRight 0.4s ease-out;
+        max-width: 350px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        line-height: 1.4;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
     `;
-    notification.textContent = message;
+    
+    // Add icon based on message content
+    let icon = 'fas fa-check-circle';
+    if (message.includes('حذف') || message.includes('Removed')) {
+        icon = 'fas fa-trash-alt';
+    } else if (message.includes('إضافة') || message.includes('Added')) {
+        icon = 'fas fa-plus-circle';
+    }
+    
+    notification.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <i class="${icon}" style="font-size: 1.2rem;"></i>
+            <span>${message}</span>
+        </div>
+    `;
     
     document.body.appendChild(notification);
     
     setTimeout(() => {
-        notification.style.animation = 'slideOutRight 0.3s ease-out';
+        notification.style.animation = 'slideOutRight 0.4s ease-out';
         setTimeout(() => {
             if (document.body.contains(notification)) {
                 document.body.removeChild(notification);
             }
-        }, 300);
-    }, 3000);
+        }, 400);
+    }, 4000);
 }
 
 // Add CSS for animations
@@ -682,22 +739,22 @@ style.textContent = `
     @keyframes slideInRight {
         from {
             opacity: 0;
-            transform: translateX(100px);
+            transform: translateX(120px) scale(0.8);
         }
         to {
             opacity: 1;
-            transform: translateX(0);
+            transform: translateX(0) scale(1);
         }
     }
     
     @keyframes slideOutRight {
         from {
             opacity: 1;
-            transform: translateX(0);
+            transform: translateX(0) scale(1);
         }
         to {
             opacity: 0;
-            transform: translateX(100px);
+            transform: translateX(120px) scale(0.8);
         }
     }
     

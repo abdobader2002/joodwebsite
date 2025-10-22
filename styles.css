@@ -1795,6 +1795,58 @@ body::before {
     margin-bottom: 40px;
 }
 
+.empty-cart-subtitle {
+    color: var(--secondary-color);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-style: italic;
+}
+
+.empty-cart .btn {
+    margin-top: 20px;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 25px;
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.empty-cart .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    transition: var(--transition);
+    z-index: 1;
+}
+
+.empty-cart .btn:hover::before {
+    left: 0;
+}
+
+.empty-cart .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(47, 95, 118, 0.3);
+}
+
+.empty-cart .btn i {
+    margin-left: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.empty-cart .btn span {
+    position: relative;
+    z-index: 2;
+}
+
 .cart-item {
     display: flex;
     align-items: center;
